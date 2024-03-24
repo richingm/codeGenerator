@@ -1,0 +1,11 @@
+# 工作目录
+work_dir: "/tmp"
+
+# app
+path_app: "/internal/app"
+
+# domain
+path_domain: "/internal/biz"
+
+# repo
+path_repo: "/internal/data/repository"
