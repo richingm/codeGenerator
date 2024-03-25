@@ -14,11 +14,25 @@ var (
 )
 
 type DomainBuild struct {
-	data []gorm.ColumnType
+	table string
+	data  []gorm.ColumnType
 }
 
-func NewDomainBuild(data []gorm.ColumnType) *DomainBuild {
+func NewDomainBuild(table string, data []gorm.ColumnType) *DomainBuild {
 	return &DomainBuild{
-		data: data,
+		table: table,
+		data:  data,
 	}
+}
+
+func (d *DomainBuild) Exec() error {
+	return nil
+}
+
+func (d *DomainBuild) buildDo() {
+
+}
+
+func (d *DomainBuild) buildBiz() {
+
 }

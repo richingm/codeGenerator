@@ -11,11 +11,21 @@ var (
 )
 
 type AppBuild struct {
-	data []gorm.ColumnType
+	table string
+	data  []gorm.ColumnType
 }
 
-func NewAppBuild(data []gorm.ColumnType) *DomainBuild {
-	return &DomainBuild{
-		data: data,
+func NewAppBuild(table string, data []gorm.ColumnType) *AppBuild {
+	return &AppBuild{
+		table: table,
+		data:  data,
 	}
+}
+
+func (a *AppBuild) Exec() error {
+	return nil
+}
+
+func (a *AppBuild) buildApp() {
+
 }

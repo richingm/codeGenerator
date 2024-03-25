@@ -17,9 +17,26 @@ var (
 )
 
 type RepoBuild struct {
-	data []gorm.ColumnType
+	table string
+	data  []gorm.ColumnType
 }
 
-func NewRepoBuild(data []gorm.ColumnType) *RepoBuild {
+func NewRepoBuild(table string, data []gorm.ColumnType) *RepoBuild {
 	return &RepoBuild{data: data}
+}
+
+func (r *RepoBuild) Exec() error {
+	return nil
+}
+
+func (r *RepoBuild) buildRepo() {
+
+}
+
+func (r *RepoBuild) buildRepoIf() {
+
+}
+
+func (r *RepoBuild) buildRepoPo() {
+
 }
