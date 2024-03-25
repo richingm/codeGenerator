@@ -8,14 +8,12 @@ import (
 
 // createAndWriteFile 创建并且写入文件
 func createAndWriteFile(filePath, content string) error {
-	// Create or truncate the file
 	file, err := os.Create(filePath)
 	if err != nil {
 		return fmt.Errorf("error creating or truncating the file: %v", err)
 	}
 	defer file.Close()
 
-	// Write content to file
 	_, err = file.WriteString(content)
 	if err != nil {
 		return fmt.Errorf("error writing content to the file: %v", err)

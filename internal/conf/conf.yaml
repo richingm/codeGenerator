@@ -1,5 +1,5 @@
 # 工作目录
-work_dir: "/tmp"
+work_dir: "./out"
 
 # app
 path_app: "/internal/app"
