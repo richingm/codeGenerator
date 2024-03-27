@@ -2,21 +2,13 @@ package biz
 
 import "time"
 
-type KnowledgePo struct {
-	Id          int64
-	CreatedAt   time.Time
-	UpdatedAt   time.Time
-	Pid         int64
-	Name        string
-	ImportLevel string
-	Notes       string
+{{.RepoDoStruct}}
+
+func ({{.RepoPoName}}) TableName() string {
+	return "{{.TableName}}"
 }
 
-func (KnowledgePo) TableName() string {
-	return "knowledges"
-}
-
-func (k *KnowledgePo) ConvertToDo(do *KnowledgeDo) {
+func (k *{{.RepoPoName}}) ConvertToDo(do *{{.RepoPoName}}) {
 	do.Id = k.Id
 	do.CreatedAt = k.CreatedAt
 	do.UpdatedAt = k.UpdatedAt

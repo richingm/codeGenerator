@@ -6,6 +6,8 @@ import (
 	"github.com/samber/lo"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+	"richingm/codeGenerator/internal/conf"
+	"richingm/codeGenerator/internal/server"
 )
 
 func main() {
@@ -14,7 +16,16 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(tablesInfo)
+
+	config := conf.GetConfig()
+
+	for table, columns := range tablesInfo {
+		repoBuild := server.NewRepoBuild(table, columns, config)
+		err := repoBuild.Exec()
+		if err != nil {
+			panic(err)
+		}
+	}
 }
 
 // ColumnInfo 使用Raw SQL获取表的列信息

@@ -3,6 +3,7 @@ package server
 import (
 	_ "embed"
 	"gorm.io/gorm"
+	"richingm/codeGenerator/internal/conf"
 )
 
 var (
@@ -16,12 +17,14 @@ var (
 type DomainBuild struct {
 	table string
 	data  []gorm.ColumnType
+	conf  conf.Config
 }
 
-func NewDomainBuild(table string, data []gorm.ColumnType) *DomainBuild {
+func NewDomainBuild(table string, data []gorm.ColumnType, config conf.Config) *DomainBuild {
 	return &DomainBuild{
 		table: table,
 		data:  data,
+		conf:  config,
 	}
 }
 
