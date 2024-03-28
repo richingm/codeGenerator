@@ -30,7 +30,21 @@ func NewDomainBuild(table string, data []gorm.ColumnType, config conf.Config) *D
 	}
 }
 
-func (d *DomainBuild) Exec() error {
+func (r *DomainBuild) Exec() error {
+	data := r.buildDomainData()
+
+	// biz
+	err := r.buildBiz(data)
+	if err != nil {
+		return err
+	}
+
+	// do
+	err = r.buildDo(data)
+	if err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -43,7 +57,7 @@ type domainBuildData struct {
 	TableName       string
 }
 
-func (r *RepoBuild) buildDomainData() *domainBuildData {
+func (r *DomainBuild) buildDomainData() *domainBuildData {
 	res := &domainBuildData{}
 	//res.RepoName = underscoreToCamelCase(CombineWords(r.table, "Repo"))
 	//res.RepoNameToLower = lowerCamelCase(underscoreToCamelCase(CombineWords(r.table, "Repo")))

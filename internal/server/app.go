@@ -28,6 +28,14 @@ func NewAppBuild(table string, data []gorm.ColumnType, config conf.Config) *AppB
 }
 
 func (a *AppBuild) Exec() error {
+	data := a.buildAppData()
+
+	// app
+	err := a.buildApp(data)
+	if err != nil {
+		return err
+	}
+
 	return nil
 }
 
