@@ -20,8 +20,23 @@ func main() {
 	config := conf.GetConfig()
 
 	for table, columns := range tablesInfo {
+		// repo
 		repoBuild := server.NewRepoBuild(table, columns, config)
 		err := repoBuild.Exec()
+		if err != nil {
+			panic(err)
+		}
+
+		// domain
+		domainBuild := server.NewDomainBuild(table, columns, config)
+		err = domainBuild.Exec()
+		if err != nil {
+			panic(err)
+		}
+
+		// app
+		appBuild := server.NewAppBuild(table, columns, config)
+		err = appBuild.Exec()
 		if err != nil {
 			panic(err)
 		}
